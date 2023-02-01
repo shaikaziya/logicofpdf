@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import { Viewer, Worker } from "@react-pdf-viewer/core"; 
+import { Viewer, Worker } from "@react-pdf-viewer/core";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+import Draggable from "react-draggable";
 // import "@react-pdf-viewer/core/lib/styles/index.css";
 
 import Box from "@mui/material/Box";
@@ -61,33 +62,33 @@ export const Pdfupload = () => {
             noValidate
             autoComplete="off"
           >
-            <TextField
-              id="outlined-basic"
-              label="Enter FirstName"
-              variant="outlined"
-            />
+            <Draggable>
+              <div className="box">
+                <TextField
+                  id="outlined-basic"
+                  label="Enter FirstName"
+                  variant="outlined"
+                />
+              </div>
+            </Draggable>
             <br></br>
-            <TextField
-              id="outlined-basic"
-              label="Enter LastName"
-              variant="outlined"
-            />
+            <Draggable>
+              <TextField
+                id="outlined-basic"
+                label="Enter LastName"
+                variant="outlined"
+              />
+            </Draggable>
           </Box>
         </div>
 
         <div className="item last">
           <br></br>
           <form onSubmit={handlePdfFileSubmit}>
-            <input
-              type="file"
-              required
-              onChange={handlePdfFileChange}
-            />
+            <input type="file" required onChange={handlePdfFileChange} />
             {pdfFileError && <div className="error-msg">{pdfFileError}</div>}
             <br></br>
-            <button type="submit">
-              UPLOAD
-            </button>
+            <button type="submit">UPLOAD</button>
           </form>
           <br></br>
           <h4>View PDF</h4>
